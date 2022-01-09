@@ -5,7 +5,7 @@ import ContactForm from "./components/ContactForm/ContactForm";
 import ContactList from "./components/ContactList/ContactList";
 import Filter from "./components/Filter/Filter";
 import { Text, Title } from "./components/styles/styled";
-import LS from "./helpers/LocalStorage";
+import LocalStorage from "./helpers/LocalStorage";
 
 class App extends Component {
   state = {
@@ -14,13 +14,13 @@ class App extends Component {
   };
 
   componentDidMount() {
-    const contacts = LS.getFromList();
+    const contacts = LocalStorage.getFromList();
     this.setState({ contacts });
   }
 
   componentDidUpdate(_, prevState) {
     const { contacts } = this.state;
-    if (contacts !== prevState.contacts) LS.addToList(contacts);
+    if (contacts !== prevState.contacts) LocalStorage.addToList(contacts);
   }
 
   addContact = (data) => {
