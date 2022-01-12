@@ -55,7 +55,9 @@ class App extends Component {
   checkUniqueContact(data) {
     const { contacts } = this.state;
     return contacts.findIndex(
-      (contact) => contact.name === data.name || contact.number === data.number
+      (contact) =>
+        contact.name.toLowerCase() === data.name.toLowerCase() ||
+        contact.number === data.number
     );
   }
 
